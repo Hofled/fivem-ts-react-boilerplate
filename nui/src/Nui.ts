@@ -1,5 +1,7 @@
 const events: { [key: string]: Function[] } = {};
 
+const PARENT_RESOURCE_NAME = "fivem-ts-react-boilerplate"; // Change this to the name of your resource
+
 const onEvent = (type: string, func: Function) => {
     // Initialize new array for event
     if (events[type] == null) {
@@ -7,6 +9,16 @@ const onEvent = (type: string, func: Function) => {
     }
     // Add new handler to the list of event handlers
     events[type].push(func);
+}
+
+const invokeNUICallback = (name: string, data: any) => {
+    fetch(`https://${PARENT_RESOURCE_NAME}/${name}`, {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json; charset=UTF-8',
+        },
+        body: JSON.stringify(data)
+    }).then(resp => resp.json()).then(resp => console.log(resp));
 }
 
 const emitEvent = (type: string, payload: any) => {
@@ -25,8 +37,15 @@ const ListenNuiMessages = () => {
     return null; // dont render anything, just listen for events.
 }
 
+window.addEventListener("keydown", ev => {
+    if (ev.key == "Escape") {
+        invokeNUICallback("exit", null);
+    }
+});
+
 export {
     onEvent,
     emitEvent,
+    invokeNUICallback,
     ListenNuiMessages
 }
