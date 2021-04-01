@@ -1,9 +1,17 @@
 let nuiDisplayed = false;
 
-RegisterCommand("toggle", () => {
+RegisterCommand("toggleUI", () => {
     nuiDisplayed = !nuiDisplayed;
-    SendNUIMessage({
+    console.log("Toggling visibility");
+
+    emit("chat:addMessage", {
+        args: [
+            "Toggling UI visibility"
+        ]
+    });
+
+    SendNuiMessage(JSON.stringify({
         type: "display",
         payload: nuiDisplayed
-    });
+    }));
 }, false);

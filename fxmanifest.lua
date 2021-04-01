@@ -3,8 +3,9 @@ game "gta5"
 
 name 'FiveM Typescript React NUI Boilerplate'
 description 'A boilerplate for developing NUI using React with Typescript'
-client_script "client.js"
 author "Hofled"
+
+client_script "client.js"
 
 ui_page "nui/build/index.html"
 
