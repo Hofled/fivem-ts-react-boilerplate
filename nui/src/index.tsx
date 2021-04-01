@@ -1,22 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { useSelector as useReduxSelector, Provider, TypedUseSelectorHook } from 'react-redux';
-import { createStore } from "redux";
+import { Provider } from 'react-redux';
 
+import { store } from "./redux/store";
+import App from './components/App/App';
+import { ListenNuiMessages } from "./Nui"
 
-import rootReducer from "./Reducers";
-import App from './Containers/App/App';
-import { EventListener } from "./Nui"
-
-export const store = createStore(rootReducer, {});
-
-type RootState = ReturnType<typeof rootReducer>;
-export const useSelector: TypedUseSelectorHook<RootState> = useReduxSelector
+// Initialize NUI message listening
+ListenNuiMessages();
 
 ReactDOM.render(
     <Provider store={store}>
         <App/>
-        <EventListener/>
     </Provider>,
     document.getElementById('app'),
 );
