@@ -5,23 +5,24 @@ This is built upon [fivem-react-boilerplate](https://github.com/2277/fivem-react
 # Setup
 ## Cloning the boilerplate
 ```
-git clone https://github.com/99kr/fivem-ts-react-boilerplate.git resourcename
+git clone https://github.com/Hofled/fivem-ts-react-boilerplate.git resourcename
 ```
 
 ## Dependencies
-Navigate into `nui`.
+Navigate into the `nui` folder, where all the source code of the React client-side is in.
+
+Run:
 ```
 npm install
 ```
 
 ## Run a local development server
+Initializes a local development server with hot module reloading using webpack.
 ```
 npm start
 ```
 
-## Build it
+## Build
 ```
 npm run build
 ```
-
-### Happy Developing :)
