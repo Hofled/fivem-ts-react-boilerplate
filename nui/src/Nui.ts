@@ -2,7 +2,7 @@ const events: { [key: string]: Function[] } = {};
 
 declare function GetParentResourceName(): string;
 
-const PARENT_RESOURCE_NAME = GetParentResourceName();
+const PARENT_RESOURCE_NAME = process.env.NODE_ENV == "development" ? "" : GetParentResourceName();
 
 const onEvent = (type: string, func: Function) => {
     // Initialize new array for event
