@@ -1,6 +1,8 @@
 const events: { [key: string]: Function[] } = {};
 
-const PARENT_RESOURCE_NAME = "fivem-ts-react-boilerplate"; // Change this to the name of your resource
+declare function GetParentResourceName(): string;
+
+const PARENT_RESOURCE_NAME = GetParentResourceName();
 
 const onEvent = (type: string, func: Function) => {
     // Initialize new array for event
